@@ -1,0 +1,63 @@
+<br />
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h1>Ejemplo de Maestro - Detalle</h1>
+        <hr />
+    </div>
+    <div class="col-1"></div>
+</div>
+<br />
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-5">
+        <h2>Listado de Clientes</h2>
+        <hr />
+        <table class="table table-responsive table-striped">
+            <thead>
+                <tr>
+                    <td class = "clicksble"(click) ="onSort('id')" style="width: 10%;"><b>ID</b></td>
+                    <td class = "clicksble" (click) ="onSort('firstname')" style="width: 20%;"><b>Nombre</b></td>
+                    <td class = "clicksble" (click) ="onSort('lastname')" style="width: 30%;"><b>Apellidos</b></td>
+                    <td class = "clicksble" (click) ="onSort('office')" style="width: 25%;"><b>Ciudad</b></td>
+                    <td style="width: 15%"> Conectado</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let userItem of usersList | sort: field: order">
+                    <td >{{userItem.id}}</td>
+                    <td >{{userItem.firstname}}</td>
+                    <td >{{userItem.lastname}}</td>
+                    <td >{{userItem.office}}</td>
+                    <td >{{userItem.online | siono}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm" (click)="onClickFicha(userItem)">ficha</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br/>
+        <div *ngIf="demo">
+            <p><b>Seleccionado: </b> {{userSelect?.firstname | uppercase}} {{userSelect?.lastname | titlecase}}</p>
+            <p><b>Fecha short: </b>{{currentDate | date: 'short'}}</p>
+            <p><b>Fecha medium: </b>{{currentDate | date: 'medium'}}</p>
+            <p><b>Fecha long: </b>{{currentDate | date: 'long'}}</p>
+            <p><b>Fecha full: </b>{{currentDate | date: 'full'}}</p>
+            <p><b>Fecha fullDate: </b>{{currentDate | date: 'fullDate'}}</p>
+            <p><b>Fecha personalizado: </b>{{currentDate | date: 'dd/MM/yyyy'}}</p>
+            <p><b>Fecha personalizado: </b>{{currentDate | date: 'MMM, dd'}}</p>
+            <p><b>Observable: </b>{{time | async | date :'medium'}}</p>
+            <p><b>Pipe Code: </b>{{demo}} vs {{demoText}}</p>
+            <p><b>Number in Service</b>{{demoNumber}}</p>
+        </div>
+    </div>
+    <div class="col-5">
+        <!--Incorporamos el html del detalle-->
+        <app-detail #detail1 [userElement]="userSelect" (onSave)="onSaveUser($event)"/>
+    </div>
+    <div class="col-1"></div>
+</div>
+<br/>
+<br/>
+<br/>
