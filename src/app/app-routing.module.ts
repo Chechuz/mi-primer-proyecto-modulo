@@ -4,6 +4,9 @@ import { MasterComponent } from './components/master-detail/master/master.compon
 import { HomeComponent } from './components/home/home.component';
 import { DemoDirectivesComponent } from './components/demo-directives/demo-directives.component';
 import { FormTemplateComponent } from './components/form-template/form-template.component';
+import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { CustomerListComponent } from './components/customer/customer-list.component';
+import { CustomerDetailComponent } from './components/customer/customer-detail.component';
 
 
 
@@ -12,6 +15,9 @@ const routes: Routes = [
   {path: 'masterdetail', component: MasterComponent},
   { path: 'directives', component: DemoDirectivesComponent },
   { path: 'formtemplate', component: FormTemplateComponent},
+  { path: 'formreactive', component: FormReactiveComponent},
+  { path: 'customers', component: CustomerListComponent },
+  { path: 'customers/:id', component: CustomerDetailComponent },
   { path: '**', redirectTo: '' }
 ];
 

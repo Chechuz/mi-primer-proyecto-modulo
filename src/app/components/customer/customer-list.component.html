@@ -1,0 +1,100 @@
+<br />
+<div class="row">
+    <div class="col-1"> </div>
+    <div class="col-10"> 
+        <h1>Ejercicio: Clientes</h1>
+        <hr />
+        <br />
+    </div>
+    <div class="col-1"> </div>
+</div>
+<br />
+<!--FILTRO DE CLIENTES-->
+<div class="row">
+    <div class="col-1"> </div>
+    <div class="col-10"> 
+        <div class="card">
+            <h5 class="card-header"><b>Filtro de Clientes</b></h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label><b>Empresa</b></label>
+                            <input type="text" class="form-control" [(ngModel)]="companySearch"/>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label><b>Ciudad</b></label>
+                            <select class="form-select" [(ngModel)]="citySearch">
+                                <option value="" selected>Seleccionar una ciudad</option>
+                                <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+                            </select>
+                        </div>                        
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label><b>País</b></label>
+                            <select class="form-select"  [(ngModel)]="countrySearch" (change)="onChangeCountry()">
+                                <option value="" selected>Seleccionar un país</option>
+                                <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+                            </select>
+                        </div>                         
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col text-end">
+                        <button type="button" class="btn btn-danger" (click)="clearCustomer()">Volver</button> &nbsp;
+                        <button type="button" class="btn btn-success" (click)="searchCustomer()">Buscar</button> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"> </div>
+</div>
+<br />
+<!--LISTADO DE CLIENTES-->
+<div class="row">
+    <div class="col-1"> </div>
+    <div class="col-10"> 
+        <div class="card">
+            <h5 class="card-header"><b>Listado de Clientes</b></h5>
+            <div class="card-body">
+                <table class="table table-striped table-responsive">
+                    <thead>
+                        <tr>
+                            <td><b>Identificador</b></td>
+                            <td><b>Empresa</b></td>
+                            <td><b>Contacto</b></td>
+                            <td><b>Dirección</b></td>
+                            <td><b>Teléfono</b></td>
+                            <td><b>Operativa</b></td>
+                        </tr>
+                    </thead>
+                    <body>
+                        <tr *ngFor="let item of customers">
+                            <td>{{item.customerID}}</td>
+                            <td>{{item.companyName}}</td>
+                            <td>
+                                {{item.contactName}}
+                                <br/>
+                                <small>({{item.contactTitle}})</small>
+                            </td>
+                            <td>
+                                {{item.address}}
+                                <br/>
+                                <small>{{item.postalCode}} {{item.city}} ({{item.country}})</small>
+                            </td>
+                            <td>{{item.phone}}</td>
+                            <td><a [routerLink]="['/customers', item.customerID]" class="btn btn-success btn-sm">ficha</a></td>
+                        </tr>
+                    </body>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"> </div>
+</div>
+<br />

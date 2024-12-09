@@ -21,6 +21,10 @@ import { DemoDirectivesComponent } from './components/demo-directives/demo-direc
 import { ShowIfDirective } from './directives/show-if.directive';
 import { CoreService } from './services/core.service';
 import { FormTemplateComponent } from './components/form-template/form-template.component';
+import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomerListComponent } from './components/customer/customer-list.component';
+import { CustomerDetailComponent } from './components/customer/customer-detail.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -41,6 +45,9 @@ registerLocaleData(localeEs, 'es');
     DemoDirectivesComponent,
     ShowIfDirective,
     FormTemplateComponent,
+    FormReactiveComponent,
+    CustomerListComponent,
+    CustomerDetailComponent,
   
   ],
   imports: [
@@ -48,7 +55,8 @@ registerLocaleData(localeEs, 'es');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }, SionoPipe, CoreService],
   bootstrap: [AppComponent]
